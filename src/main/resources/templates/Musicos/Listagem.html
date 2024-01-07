@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+                xmlns:th = "http://thymeleaf.org"
+                xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate = "~{template.html}"
+>
+<head>
+    <title>Lista de musicos</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+<h1>Lista de musicos</h1>
+    <a href="/musicos/formulario">Novo</a>
+    <table>
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th>INSTRUMENTO</th>
+                <th>FAMILIA DO INSTRUMENTO</th>
+                <th>FASE</th>
+                <th>AÇÕES</th>
+            </tr>
+        </thead>
+             <tbody>
+                <tr th:each = "musicos : ${lista}">
+                    <td th:text = "${musicos.nome}"></td>
+                    <td th:text = "${musicos.instrumentos}"></td>
+                    <td th:text = "${musicos.familia_instrumento}"></td>
+                    <td th:text = "${musicos.fase}"></td>
+                    <td>
+                        <a th:href="@{/musicos/formulario?id={id}(id=${musicos.id})}">Editar</a>
+                        <form action="/musicos" method="post" >
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${musicos.id}">
+                            <input type="submit" value="excluir">
+                        </form>
+                    </td>
+                </tr>
+             </tbody>
+    </table>
+</div>
+     </body>
+
+</html>
