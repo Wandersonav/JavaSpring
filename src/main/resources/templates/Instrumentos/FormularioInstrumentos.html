@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate = "~{template.html}"
+>
+<head>
+    <title>Cadastro de Instrumentos</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+<h1>Cadastro de Instrumentos</h1>
+<form method="post" action="/instrumentos">
+
+    <input type="hidden" name="_method" value="put" th:if="${instrumentos != null}">
+    <input type="hidden" name="id" th:value="${instrumentos?.id}">
+
+    <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" name="nome" th:value="${instrumentos?.nome}">
+    </div>
+    <br/>
+
+    <div>
+    <label for="voz">Voz:</label>
+    <input id="voz" name="voz" th:value="${instrumentos?.voz}">
+    </div>
+    <br/>
+
+    <div>
+    <label for="familia_instrumento">Familia Instrumento:</label>
+    <input id="familia_instrumento" name="familia_instrumento" th:value="${instrumentos?.familia_instrumento}">
+    </div>
+
+
+
+
+    <input type="submit" value="Cadastrar">
+   <br>
+
+</form>
+    <a href="/instrumentos/listagemInstrumentos" id="voltar">voltar</a>
+</div>
+</body>
+</html>

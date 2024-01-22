@@ -5,31 +5,31 @@
                 layout:decorate = "~{template.html}"
 >
 <head>
-    <title>Lista de musicos</title>
+    <title>Lista de instrumentos</title>
 </head>
 <body>
 <div layout:fragment="conteudo">
-<h1>Lista de musicos</h1>
-    <a href="/musicos/formulario">Novo</a>
+<h1>Lista de instrumentos</h1>
+    <a href="/instrumentos/formularioInstrumentos">Novo</a>
     <table>
         <thead>
             <tr>
                 <th>NOME</th>
-                <th>INSTRUMENTO</th>
+                <th>VOZ</th>
                 <th>FAMILIA DO INSTRUMENTO</th>
-                <th>FASE</th>
                 <th>AÇÕES</th>
             </tr>
         </thead>
              <tbody>
-                <tr th:each = "musicos : ${lista}">
-                    <td th:text = "${musicos.nome}"></td>
-                    <td th:text = "${musicos.fase}"></td>
+                <tr th:each = "instrumentos : ${lista}">
+                    <td th:text = "${instrumentos.nome}"></td>
+                    <td th:text = "${instrumentos.voz}"></td>
+                    <td th:text = "${instrumentos.familia_instrumento}"></td>
                     <td>
-                        <a th:href="@{/musicos/formulario?id={id}(id=${musicos.id})}">Editar</a>
-                        <form action="/musicos" method="post" >
+                        <a th:href="@{/instrumentos/formularioInstrumentos?id={id}(id=${instrumentos.id})}">Editar</a>
+                        <form action="/instrumentos" method="post" >
                             <input type="hidden" name="_method" value="delete">
-                            <input type="hidden" name="id" th:value="${musicos.id}">
+                            <input type="hidden" name="id" th:value="${instrumentos.id}">
                             <input type="submit" value="excluir">
                         </form>
                     </td>

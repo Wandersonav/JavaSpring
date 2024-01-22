@@ -1,5 +1,5 @@
 package br.com.aula.domain.musicos;
 
-public record DadosCadastroMusicos(Long id, String nome, String instrumento, String familiaInstrumento, String fase) {
+public record DadosCadastroMusicos(Long id, String nome,String fase) {
 
 }

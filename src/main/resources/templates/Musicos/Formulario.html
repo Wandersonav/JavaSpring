@@ -4,6 +4,7 @@
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate = "~{template.html}"
 >
+
 <head>
     <title>Cadastro de Músicos</title>
 </head>
@@ -22,16 +23,14 @@
     <br/>
 
     <div>
-    <label for="instrumentos">Instrumento:</label>
-    <input id="instrumentos" name="instrumento" th:value="${musicos?.instrumentos}">
+        <label for="instrumentosID">Selecione seu Estado:</label>
+        <select id="instrumentosID">
+            <option th:value="${instrumentos?.nome}"></option>
+            <option value="AL">Alagoas</option>
+        </select>
+
     </div>
     <br/>
-
-    <div>
-    <label for="familia_instrumento">Familia Instrumento:</label>
-    <input id="familia_instrumento" name="familiaInstrumento" th:value="${musicos?.familia_instrumento}">
-    </div>
-
 
     <br/>
     <div>
@@ -46,5 +45,10 @@
 </form>
     <a href="/musicos/listagem" id="voltar">voltar</a>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#instrumentosID').select2();
+    });
+</script>
 </body>
 </html>

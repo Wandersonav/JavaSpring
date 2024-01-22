@@ -7,14 +7,10 @@ public class Musicos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String instrumentos;
-    private String familia_instrumento;
     private String fase;
 
     public Musicos(DadosCadastroMusicos dados) {
         this.nome = dados.nome();
-        this.instrumentos = dados.instrumento();
-        this.familia_instrumento = dados.familiaInstrumento();
         this.fase = dados.fase();
     }
 
@@ -26,8 +22,6 @@ public class Musicos {
     public String toString() {
         return "Musicos{" +
                 "nome='" + nome + '\'' +
-                ", instrumentos=" + instrumentos +
-                ", familia_instrumento=" + familia_instrumento +
                 ", fase='" + fase + '\'' +
                 '}';
     }
@@ -48,21 +42,6 @@ public class Musicos {
         this.nome = nome;
     }
 
-    public String getInstrumentos() {
-        return instrumentos;
-    }
-
-    public void setInstrumentos(String instrumentos) {
-        this.instrumentos = instrumentos;
-    }
-
-    public String getFamilia_instrumento() {
-        return familia_instrumento;
-    }
-
-    public void setFamilia_instrumento(String familia_instrumento) {
-        this.familia_instrumento = familia_instrumento;
-    }
 
     public String getFase() {
         return fase;
@@ -74,8 +53,6 @@ public class Musicos {
 
     public void atualizaDados(DadosAlteracaoMusicos dados){
         this.nome = dados.nome();
-        this.instrumentos = dados.instrumento();
-        this.familia_instrumento = dados.familiaInstrumento();
         this.fase = dados.fase();
     }
 
