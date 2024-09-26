@@ -9,11 +9,24 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/musicos")
 public class MusicosController {
+
     @Autowired
     private MusicosRepository repository;
+    @Autowired
+    private MusicosRepository musicosRepository;
+
+    @GetMapping
+    public String listarMusicos(Model model) {
+        List<Musicos> musicos = repository.findAll();
+        model.addAttribute("musicos");
+        return "listagem"; // Nome da view HTML que você deseja retornar
+    }
+
 
     @GetMapping("/formulario")
     public String carregaPaginaFormulario(Long id, Model model ) {
@@ -50,6 +63,7 @@ public class MusicosController {
     @DeleteMapping
     @Transactional
     public String removeMusicos(long id){
+        musicosRepository.deleteByInstrumentosId(id);
         repository.deleteById(id);
         return "redirect:/musicos/listagem";
 

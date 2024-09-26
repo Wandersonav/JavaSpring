@@ -1,4 +1,5 @@
 package br.com.aula.domain.musicos;
+import br.com.aula.domain.instrumentos.Instrumentos;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "musicos")
@@ -8,6 +9,11 @@ public class Musicos {
     private Long id;
     private String nome;
     private String fase;
+
+
+    @ManyToOne
+    @JoinColumn(name = "instrumentosID") // nome da coluna na tabela musicos
+    private Instrumentos instrumento;
 
     public Musicos(DadosCadastroMusicos dados) {
         this.nome = dados.nome();
